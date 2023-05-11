@@ -1,0 +1,159 @@
+body {
+    background: #2c3e50; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to left,
+        #4ca1af,
+        #2c3e50
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to left,
+        #4ca1af,
+        #2c3e50
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: "Berkshire Swash", cursive;
+}
+
+.header h1 {
+    text-align: center;
+    font-size: 9rem;
+    color: #fff;
+}
+.mt-50 {
+    margin-top: 50px;
+}
+.mt-45 {
+    margin-top: 45px;
+}
+.mb-50 {
+    margin-bottom: 50px;
+}
+.mt-30 {
+    margin-top: 30px;
+}
+.mb-30 {
+    margin-bottom: 30px;
+}
+.mt-10 {
+    margin-top: 10px;
+}
+.ml-10 {
+    margin-left: 10px;
+}
+.mt--193 {
+    margin-top: -193px;
+}
+.mt--100 {
+    margin-top: -80px;
+}
+.w-85 {
+    width: 85%;
+}
+.w-60 {
+    width: 60%;
+}
+
+.navbar-expand-lg {
+    background: rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+.navbar-brand {
+    color: #fff;
+}
+.navbar .nav-link {
+    color: #fff;
+    font-size: 20px;
+}
+
+.header {
+    background-image: url("/images/banner.jpeg");
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+}
+
+.banner-text {
+    width: 25%;
+    color: #fff;
+    position: absolute;
+    top: 44%;
+    left: 38%;
+    /* background: rgba(0, 0, 0, 0.4); */
+    /* opacity: 0.4; */
+    padding: 6px;
+    /* border-radius: 5px; */
+}
+.banner-text h2 {
+    font-size: 7rem;
+    /* line-height: 0cap; */
+}
+.banner-text p {
+    color: #bdbdbd;
+}
+
+/* home page */
+.home {
+    margin-top: -40px;
+}
+.form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+.light-gray {
+    color: #5a5a5a !important;
+}
+.btn {
+    color: #5a5a5a;
+}
+.btn:hover {
+    color: #000;
+}
+.btn-book {
+    background-color: #4ca1af;
+    border-radius: 10px;
+    height: 37px;
+    border: none;
+}
+.danger {
+    color: red;
+}
+
+.home_rooms img {
+    width: 100%;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+.home_rooms img:hover {
+    margin-top: -40px;
+}
+.short_desc {
+    background: rgba(0, 0, 0, 0.1);
+    color: #fff;
+    padding: 20px;
+    transition: 0.5s;
+}
+.short_desc:hover {
+    margin-top: -40px;
+}
+.explore {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    color: #000;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    margin-top: 90px;
+}
+
+.explore1 {
+    background: rgba(255, 255, 255, 0.1) !important;
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 10px;
+    text-align: center;
+}
+.flex_dir {
+    flex-direction: row-reverse !important;
+}

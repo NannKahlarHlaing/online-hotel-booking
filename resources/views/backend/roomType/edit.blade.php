@@ -21,12 +21,28 @@
                         <input type="text" class="form-control" id="bed" name="bed" value="{{ $room_type->bed }}">
                     </div>
                     <div class="form-group">
-                        <label for="size">Size </label>
+                        <label for="size">Size(m<sup>2</sup>) </label>
                         <input type="number" class="form-control" id="name" name="size" value="{{ $room_type->size }}">
                     </div>
                     <div class="form-group">
+                        <label for="price">Price </label>
+                        <input type="number" class="form-control" id="price" name="price" value="{{ $room_type->price }}">
+                    </div>
+                    <div class="form-group">
                         <label for="desc">Description</label>
-                        <textarea class="form-control" id="desc" rows="3" name="desc">{{ $room_type->name }}</textarea>
+                        <textarea class="form-control" id="desc" rows="3" name="desc">{{ $room_type->description }}</textarea>
+                    </div>
+                    <div class="form-group">    
+                        <div class="row">
+                            @foreach ($facilities as $item)
+                               
+                                <div class="col-md-3">
+                                    <input type="checkbox" name="facilities[]" value="{{ $item->name }}" @if(in_array($item->name, $facts)) checked @endif>
+                                    <label>{{ $item->name }}</label>
+                                </div>
+                                    
+                            @endforeach
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Upload Images</label>
@@ -41,10 +57,6 @@
                                     </div>
                                 </div>
                         @endforeach
-                    </div>
-                    <div class="form-group">
-                        <label for="price">Price </label>
-                        <input type="number" class="form-control" id="price" name="price" value="{{ $room_type->price }}">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-info">Save</button>

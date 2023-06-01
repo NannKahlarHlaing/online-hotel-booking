@@ -9,7 +9,7 @@ use App\Models\RoomType;
 class RoomController extends Controller
 {
     public function getData(Request $request){
-        $data = Room::select()->where('roomType_id', $request->room_type)->get();
+        $data = Room::where('roomType_id', $request->room_type)->get();
         return $data;
     }
 
@@ -33,7 +33,7 @@ class RoomController extends Controller
             'status' => '1'
         ]);
 
-        return redirect('/rooms');
+        return redirect('/admin/rooms');
         
     }
 
@@ -52,14 +52,14 @@ class RoomController extends Controller
         $room->roomType_id = $request->room_type;
         $room->save();
 
-        return redirect('/rooms');
+        return redirect('/admin/rooms');
     }
 
     public function destroy($id){
         $room = Room::find($id);
         $room->delete();
 
-        return redirect('/rooms')->with('status', 'Room is deleted successfully!');
+        return redirect('/admin/rooms')->with('status', 'Room is deleted successfully!');
     }
 }
 

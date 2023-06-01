@@ -20,13 +20,14 @@
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
-            <th>Name</th>
-            <th>Occupancy</th>
-            <th>Bed</th>
-            <th>Size</th>
-            <th class="w-25">Description</th>
-            <th>Price</th>
-            <th>Action</th>
+            <th style="width:10%">Name</th>
+            <th style="width:7%">Occupancy</th>
+            <th style="width:7%">Bed</th>
+            <th style="width:7%">Size</th>
+            <th style="width:15%">Description</th>
+            <th style="width:15%">Facilities</th>
+            <th style="width:7%">Price</th>
+            <th style="width:10%">Action</th>
         </thead>
         <tbody>
             @foreach($room_types as $room)
@@ -36,10 +37,11 @@
                     <td>{{ $room->bed }}</td>
                     <td>{{ $room->size }}</td>
                     <td>{{ $room->description }}</td>
+                    <td>{{ $room->facilities }}</td>
                     <td>{{ $room->price }}</td>
                     <td>
-                        <a href="{{ url('/edit_roomType') . '/' . $room->id }}" class="btn btn-info">Edit</a>
-                        <a href="{{ url('/delete_roomType') . '/' . $room->id }}" class="btn btn-info">Delete</a></a>
+                        <a href="{{ url('/admin/edit_roomType') . '/' . $room->id }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ url('/admin/delete_roomType') . '/' . $room->id }}" class="btn btn-danger">Delete</a></a>
                     </td>
                 </tr>
             @endforeach

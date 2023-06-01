@@ -4,7 +4,7 @@
     <section class="container">
         <h3>Room Types</h3>
         <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-12">
+            <div class="col-lg-12  ">
                 <form class="form" method="POST" action="{{ route('store_roomType') }}" enctype="multipart/form-data"> 
                     @csrf
                     <div class="form-group">
@@ -20,8 +20,12 @@
                         <input type="text" class="form-control" id="bed" name="bed">
                     </div>
                     <div class="form-group">
-                        <label for="size">Size </label>
+                        <label for="size">Size (sqm) </label>
                         <input type="number" class="form-control" id="name" name="size">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price </label>
+                        <input type="number" class="form-control" id="price" name="price">
                     </div>
                     <div class="form-group">
                         <label for="desc">Description</label>
@@ -31,9 +35,15 @@
                         <label>Upload Images</label>
                         <input type="file" class="form-control" name="images[]" multiple>
                     </div>
-                    <div class="form-group">
-                        <label for="price">Price </label>
-                        <input type="number" class="form-control" id="price" name="price">
+                    <div class="form-group">    
+                        <div class="row">
+                            @foreach ($facilities as $item)
+                                <div class="col-md-3">
+                                    <input type="checkbox" name="facilities[]" value="{{ $item->name }}">
+                                    <label>{{ $item->name }}</label>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-info">Save</button>

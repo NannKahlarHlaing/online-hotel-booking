@@ -2,6 +2,14 @@
 
 @section('content')
 
+<div class="banner-text scroll-left text-center">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Welcome</h2>
+            <p class="scroll-bottom text-center">to make your travel experience a genuine pleasure</p>
+        </div>
+    </div>
+</div>
 <section class="home">
     <div class="container">
         <div class="row">
@@ -74,7 +82,9 @@
                         <div class="col-md-2 form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="number" class="form-control" name="adult" placeholder="Adult" value="{{ old('adult') }}">
+                                   
+                                    <input type="number" class="form-control" name="adult" value="{{ old('adult') }}" placeholder="Adult" min="1" max="3">
+                                   
                                     @error('adult')
                                         <p class="danger" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -82,7 +92,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="number" class="form-control" name="child" placeholder="Child" value="{{ old('child') }}">
+                                    <input type="number" class="form-control" name="child"  value="{{ old('child') }}" placeholder="Child" min="1" max="3">
                                     @error('child')
                                         <p class="danger" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -92,11 +102,11 @@
                             </div>
                         </div>
                         
-                        <div class="col-md-2 form-group text-center btn-book ">
+                        <div class="col-md-2 form-group">
                             @if (auth('customer')->check())
-                                <button type="submit" class="btn">Book<i class="fa-solid fa-angles-right ml-10"></i></button>
+                                <button type="submit" class="btn btn-book">Book<i class="fa-solid fa-angles-right ml-10"></i></button>
                             @else
-                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Book<i class="fa-solid fa-angles-right ml-10"></i></button>
+                                <button type="button" class="btn btn-book" data-bs-toggle="modal" data-bs-target="#exampleModal">Book<i class="fa-solid fa-angles-right ml-10"></i></button>
                             @endif
                         </div>
                     </div>
@@ -150,14 +160,15 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12" id="register">
                             <p>You don't have an account yet? <button class="btn btn-book" id="btn-register">Register</button></p>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12" id="login">
                             <p>If you have an account. <button class="btn btn-book" id="btn-login">Login</button></p>
                         </div>
-                        <div class="col-md-12 bg-light" id="register">
-                            <form id="register-form" class="form" action="{{url('/create_user')}}" method="POST">
+                        <div class="col-md-12 bg-light" id="register-form">
+                            <h5 class="modal-title mb-1 text-center">Register</h5>
+                            <form class="register-form form" action="{{url('/create_user')}}" method="POST"> 
                                 @csrf
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Name</label>
@@ -171,7 +182,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone" class="form-label">Phone Number</label>
-                                    <input type="text" class="form-control" id="phone" name="phone" value="{{old('phone')}}">
+                                    <input type="number" class="form-control" id="phone" name="phone" value="{{old('phone')}}">
                                     <p id="phone-error" class="danger" role="alert"></p>
                                 </div>
                                 <div class="mb-3">
@@ -188,21 +199,23 @@
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Confirm Password</label>
                                     <input type="text" class="form-control" id="password_confirmation" name="password_confirmation">
-                                        <p id="password_confirmation-error" class="danger" role="alert"></p>
-                                    </div>
+                                    <p id="password_confirmation-error" class="danger" role="alert"></p>
+                                </div>
                                 <button type="submit" class="btn-book">Submit</button>
-                                </form>
+                            </form>
                         </div>
-                        <div class="col-md-12 bg-light" id="login">
-                            <form id="login-form" class="form" action="{{ url('/user-login') }}" method="POST">
+                        <div class="col-md-12 bg-light" id="login-form">
+                            <h5 class="modal-title text-center mb-1">login</h5>  
+                            <form  class="form" action="{{ url('/user-login') }}" method="POST">
+                                
                                 @csrf
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
                                     <p id="email-error" class="danger" role="alert"></p>
                                     @error('email')
-        <p class="danger" role="alert">{{ $message }}</p>
-    @enderror
+                                        <p class="danger" role="alert">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
@@ -221,17 +234,17 @@
     </div> 
     <style>
         .alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-}
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
 
-.alert-success {
-    color: #3c763d;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-}
+        .alert-success {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
     </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
@@ -242,39 +255,48 @@
     $(document).ready(function(){
         // alert('hello'); 
         $('#room_types').change(function(){
-            $event = $('#room_types').val();
-            
-            $.ajax({
-                url: '{{url('/get_roomType')}}',
-                type: 'GET',
-                data: { 'room_type': $event },
-                success: function(response){
-                    $("#rooms").empty();
-                    $("#rooms").append('<option value="" disabled selected hidden>Select Room...</option>');
-                    $.each(response, function(key, value){
-                        $('#rooms').append($('<option>', {
-                            value: value.id,
-                            text: value.room_no
-                        }));
-                    });
-                }
+    var roomType = $('#room_types').val();
+    console.log(roomType);
+    $.ajax({
+        url: '{{route('test')}}',
+        type: 'GET',
+        data: { 'room_type': roomType },
+        success: function(response){
+            $("#rooms").empty();
+            console.log(response);
+            $("#rooms").append('<option value="" disabled selected hidden>Select Room...</option>');
+            $.each(response, function(key, value){
+                $('#rooms').append($('<option>', {
+                    value: value.id,
+                    text: value.room_no
+                }));
             });
-        });
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText);
+        }
+    });
+});
+
         
         $(".datepicker").datepicker({
             minDate: 0
         });
 
-        $("#register").hide();
-        $("#login").hide();
+        $("#register-form").hide();
+        $("#login-form").hide();
 
         $("#btn-register").on('click', function(event){
-            $("#register").show('slow');
+            $("#register-form").show('slow');
+            $("#login-form").hide();
+
+            $("#register").hide();
+            $("#login").hide();
         });
 
-        $('#register-form').submit(function(event) {
+        $('.register-form').submit(function(event) {
                 event.preventDefault(); // Prevent the form from submitting and closing the modal
-                var formData = $('#register-form').serialize();
+                var formData = $('.register-form').serialize();
                 // Perform AJAX request to submit form data
                 $.ajax({
                     url: '{{('/create_user')}}',
@@ -302,7 +324,11 @@
             });
 
         $("#btn-login").on('click', function(event){
-            $("#login").show('slow');
+            $("#login-form").show('slow');
+            $("#register-form").hide();
+
+            $("#register").hide();
+            $("#login").hide();
         });
     });
     

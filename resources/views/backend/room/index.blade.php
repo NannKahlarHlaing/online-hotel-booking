@@ -35,8 +35,8 @@
                     <td>Available</td>
                 @endif
                 <td>
-                    <a href="{{ url('/edit_room') . '/' . $room->id }}" class="btn btn-info">Edit</a>
-                    <a href="{{ url('/delete_room') . '/' . $room->id }}" class="btn btn-info">Delete</a></a>
+                    <a href="{{ url('/admin/edit_room') . '/' . $room->id }}" class="btn btn-info">Edit</a>
+                    <a href="{{ url('/admin/delete_room') . '/' . $room->id }}" class="btn btn-info">Delete</a></a>
                 </td>
             </tr>
         @endforeach

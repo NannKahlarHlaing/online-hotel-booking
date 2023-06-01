@@ -14,10 +14,25 @@
                 <!-- Sidebar -->
                 <div class="row">
                     <div class="">
-                        <nav id="sidebar">
-                            <div class="sidebar-header">
-                                <h3>Hotel Booking</h3>
+                        <div class="sidebar-header">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <h2>Hotel Booking</h2>
+                                </div>
+                                <div class="col-lg-4">
+                                    <nav class="navbar navbar-expand-lg navbar-light">
+                                        <div class="container-fluid">
+                                            <button type="button" id="sidebarCollapse" class="btn btn-info">
+                                                <!-- <i class="fas fa-align-left"></i> -->
+                                                <span><i class="fa-solid fa-bars"></i></span>
+                                            </button>
+                                        </div>
+                                    </nav>
+                                </div>
                             </div>
+                        </div>
+                        <nav id="sidebar">
+                            
                             <ul class="list-unstyled components">
                                 <li class="active">
                                 <div class="dropdown">
@@ -31,20 +46,8 @@
                                 </div>
                                 </li>
                                 <li>
-                                    <a href="#">About</a>
+                                    <a href="{{ route('facilities') }}">Facilities</a>
                                 </li>
-                                <!-- <li>
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Dropdown button
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </li> -->
                                 <li>
                                     <a href="#">Portfolio</a>
                                 </li>
@@ -53,17 +56,11 @@
                                 </li>
                             </ul>     
                         </nav>
+                        
                     </div>
-                    <div class="col-lg-1">
-                        <nav class="navbar navbar-expand-lg navbar-light">
-                            <div class="container-fluid">
-                                <button type="button" id="sidebarCollapse" class="btn btn-info">
-                                    <!-- <i class="fas fa-align-left"></i> -->
-                                    <span><i class="fa-solid fa-bars"></i></span>
-                                </button>
-                            </div>
-                        </nav>
-                    </div>    
+                    {{-- <div class="col-lg-1"> --}}
+                        
+                    {{-- </div>     --}}
                 </div>                
             </div>
         </div>
@@ -103,7 +100,7 @@
         #sidebar {
             min-width: 250px;
             max-width: 250px;
-            min-height: 100vh;
+            min-height: 20vh;
         }
         a[data-toggle="collapse"] {
             position: relative;

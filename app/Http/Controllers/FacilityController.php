@@ -48,4 +48,17 @@ class FacilityController extends Controller
 
         return redirect('/admin/facilities')->with('status', 'Facility is deleted successfully!');
     }
+
+    public function about(){
+        return view('frontend.about');
+    }
+
+    public function contact(){
+        return view('frontend.contact');
+    }
+
+    public function services(){
+        return view('frontend.services');
+    }
+
 }

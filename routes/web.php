@@ -61,6 +61,8 @@ Route::prefix('/admin')->group(function(){
         Route::get('/edit_facility/{id}', 'edit')->name('edit_facility');
         Route::post('/update_facility', 'update')->name('update_facility');
         Route::get('/delete_facility/{id}', 'destroy');
+
+        
     });
     
 });
@@ -85,5 +87,12 @@ Route::post('/user-login', [App\Http\Controllers\CustomerController::class, 'log
 Route::post('/create_user', [App\Http\Controllers\CustomerController::class, 'register']);
 
 Route::post('/logout', [App\Http\Controllers\CustomerController::class, 'logout'])->name('logout');
+
+Route::get('/about', [App\Http\Controllers\FacilityController::class, 'about']);
+
+Route::get('/contact', [App\Http\Controllers\FacilityController::class, 'contact']);
+
+Route::get('/services', [App\Http\Controllers\FacilityController::class, 'services']);
+
 
 

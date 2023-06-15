@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-md-12">
                 @if (Session::has('success'))
-                    <div class="alert alert-success">{{ Session::get('success') }}</div>
+                    <div class="alert alert-danger">{{ Session::get('success') }}</div>
                 @endif
                 @if (auth('customer')->check()) 
                     Customer is logged in
@@ -113,38 +113,74 @@
                 </form>
             </div>
         </div>
-        <div class="row mt-50 mb-50">
-            <div class="col-md-4 short_desc scroll-left">
-                <h3>{{ env('HOTEl_NAME') }}</h3>
-                <p class="mt-30">Our rooms are designed to transport you into an environment made for leisure. Take your mind off the day-to-day of home life and find a private paradise.</p>
-                <a href="#" class="explore">Explore all our rooms <i class="fa-solid fa-angles-right ml-10"></i></a>
+        <div class="row mt-50 mb-50 gx-3 ">
+            <div class="col-md-4 scroll-left">
+                <div class="short_desc text-color">
+                    <h3>{{ env('HOTEl_NAME') }}</h3>
+                    <p class="mt-30">Our rooms are designed to transport you into an environment made for leisure. Take your mind off the day-to-day of home life and find a private paradise.</p>
+                
+                </div>
+                <a href="#" class="explore-link">Explore all our rooms <i class="fa-solid fa-angles-right ml-10"></i></a>
             </div>
-            <div class="col-md-4 home_rooms scroll-bottom">
-                <img src="{{ asset('images/room3.jpg') }}" >
+            <div class="col-md-4  scroll-bottom align-content-center">
+                <div class="home_room1">
+                </div>
+                <a href="{{ url('/book/roomType=2') }}" class="explore-link">Superior Room
+                </a>
             </div>
-            <div class="col-md-4 home_rooms scroll-right">
-                <img src="{{ asset('images/room2.jpg') }}" >
+            <div class="col-md-4 scroll-right align-content-center">
+                <div class="home_room2">    
+                </div>
+                <a href="{{ url('/book/roomType=6') }}" class="explore-link">Two Bedroom Suite <i class="fa-solid fa-angles-right ml-10"></i></a>
             </div>
         </div>
         <div class="row mt-50">
             <div class="col-md-8">
-                <div class="">
-                    <img src="{{ asset('images/hotel2.jpg') }}" class="w-100">
-                    <a href="#" class="explore1">Explore all our rooms <i class="fa-solid fa-angles-right ml-10"></i></a>
+                <div class="content">
+                    <div class="content-overlay"></div>
+                    <img src="{{ asset('images/Image.jpg') }}" class="w-100">
+                    <div class="content-details fadeIn-bottom">
+                        <h3 class="content-title">Our Special Experiences</h3>
+                        <p class="content-text">Are you looking to surprise that special someone with a romantic getaway, or would you like to indulge in a culinary feast until the sun goes down, maybe you’d like to unwind while enjoying an amazing bike ride through the dunes? We’re now offering special arrangements that take leisure to a whole other level.</p>
+                        <a href="{{ url('/services') }}" class="btn text-white">Find out more <i class="fa-solid fa-angles-right ml-10"></i></a>
+                      </div>
                 </div>
             </div>
-            <div class="col-md-4 mt-45">
+            <div class="col-md-4 mt-50">
                 <div class="row d-flex flex-row-reverse">
                     <div class="col-md-11 scroll-right">
-                        <img src="{{ asset('images/hotel1.jpg') }}" class="w-100">
-                        <a href="#" class="explore1 w-100">Explore all our rooms <i class="fa-solid fa-angles-right ml-10"></i></a>
+                        <img src="{{ asset('images/download.jpg') }}" class="w-100">
                     </div>
                 </div>    
             </div>
-            <div class=" offset-md-7 col-md-5 d-flex justify-content-end  mt--193">
+            <div class="col-md-7 pt-4">
+                <h3 class="content-title text-color">Our Special Experiences</h3>
+                        <p class="content-text">Are you looking to surprise that special someone with a romantic getaway, or would you like to indulge in a culinary feast until the sun goes down, maybe you’d like to unwind while enjoying an amazing bike ride through the dunes? We’re now offering special arrangements that take leisure to a whole other level.</p>
+            </div>
+            <div class=" col-md-5 d-flex justify-content-end food">
                 <div class="scroll-right">
-                    <img src="{{ asset('images/hotel3.jpg') }}" class="w-100">
-                    <a href="#" class="explore1 w-100">Explore all our rooms <i class="fa-solid fa-angles-right ml-10"></i></a>
+                    <img src="{{ asset('images/food.jpg') }}" class="w-100">
+                </div>
+            </div>
+            <div class="col-md-6 scroll-bottom spa">
+                <div class="content">
+                    <img src="{{ asset('images/spa.jpg') }}" class="w-100">
+                </div>
+            </div>
+            <div class="offset-md-1 col-md-5">
+                {{-- <div class="content">
+                    <img src="{{ asset('images/spa3.jpg') }}" class="w-100">
+                </div> --}}
+                <div class="row my-5">
+                    <div class="col-12 my-1">
+                        <h3 class="content-title text-color">Contact Info</h3>
+                    </div>
+                    <div class="col-12">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+                        <h4 class="py-2 text-color">{{ env('ADDRESS') }}</h4>
+                        <p>{{ env('CONTACT') }}</p>
+                        <p>{{ env('EMAIL') }}</p>
+                    </div>
                 </div>
             </div>
         </div>

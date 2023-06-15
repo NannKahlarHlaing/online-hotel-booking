@@ -91,7 +91,7 @@
                 </form>
         </div>
         <div class="row">
-            <div class="col-lg-8 col-md-8">
+            <div class="col-md-5">
                 <div class="mb-3 text-white">
                     <div class="row align-items-center">
                         <div class="col-md-6">
@@ -121,7 +121,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 px-5">
+            <div class="col-md-4 customer">
+                
+            </div>
+            <div class="col-md-3 px-5">
                 <div class="cus-info">
                     {{-- <form class="register-form form" action="{{url('/create_user')}}" method="POST"> 
                         @csrf

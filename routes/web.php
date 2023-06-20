@@ -74,7 +74,8 @@ Route::get('/rooms', [App\Http\Controllers\RoomTypeController::class, 'index'])-
 // Route::post('/booking', [App\Http\Controllers\BookingController::class, 'booking'])->name('booking');
 
 Route::controller(App\Http\Controllers\BookingController::class)->group(function (){
-    Route::post('/booking','booking')->name('booking');//home_page
+    // Route::post('/booking','booking')->name('booking');//home_page
+    Route::get('/booking', 'booking');
     Route::get('/book/roomType={id}', 'booking_form')->name('book');
     Route::get('/booking_confirmation/roomType={id}', 'booking_confirmation')->name('booking#Confirm');
     Route::post('/booking_confirmed', 'booking_confirmed')->name('booking#Confirmed');

@@ -648,5 +648,14 @@ h4{
         left: 0%;
         padding: 6px;
     }
+
+    .info{
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.30);
+        float: left;
+        position: absolute;
+        top: 28%;
+    
+    }
 }
 

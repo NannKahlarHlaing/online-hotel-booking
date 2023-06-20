@@ -17,7 +17,15 @@
             @foreach ($room_types as $room)
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <img src="http://localhost:3000/images/room1.jpeg" width="100%">
+                       
+                        @if (count($room->images) <= 0)
+                            <img src="/images/no_image.jpg" class="card-img-top rounded-0" width="100%" alt="...">
+                        @endif
+                        @foreach ($room->images as $key => $item)
+                            @if($key == 0)
+                                <img src="/images/{{$item->url}}" class="card-img-top rounded-0" width="100%" alt="...">
+                            @endif
+                        @endforeach  
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <h4>{{ $room->name }}</h4>

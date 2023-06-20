@@ -12,107 +12,101 @@
 </div>
 <section class="home">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                @if (Session::has('success'))
-                    <div class="alert alert-danger">{{ Session::get('success') }}</div>
-                @endif
-                @if (auth('customer')->check()) 
-                    Customer is logged in
-                    <form method="POST" action="{{ url('/logout') }}">
+            {{-- <div class="row">
+                <div class="col-md-12">
+                    @if (Session::has('success'))
+                        <div class="alert alert-danger">{{ Session::get('success') }}</div>
+                    @endif
+                    @if (Session::has('booking_fail'))
+                        <div class="alert alert-warning">{{ Session::get('booking_fail') }} </div>
+                    @endif 
+                    <div id="success-alert" class="alert alert-success" style="display: none;">
+                        <strong>Success!</strong> Your data has been submitted successfully.
+                    </div>                
+                    <form class="form" action={{ route('booking') }} method="POST">
                         @csrf
-                        <button type="submit">Logout</button>
-                      </form>
-                @else 
-                     Customer is not logged in
-                @endif
-                <div id="success-alert" class="alert alert-success" style="display: none;">
-                    <strong>Success!</strong> Your data has been submitted successfully.
-                </div>                
-                <form class="form" action={{ route('booking') }} method="POST">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-2 form-group">                            
-                            <div class="col-md-12">
-                                <select class="form-select light-gray" id="room_types" name="room_types">
-                                    <option value="" disabled selected hidden>Select RoomType...</option>
-                                    @foreach($room_types as $room_type)
-                                        <option value="{{ old('room_types', $room_type->id) }}">{{ $room_type->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('room_types')
-                                    <p class="danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </p>
-                                @enderror
-                            </div>   
-                        </div>
-                        <div class="col-md-2 form-group">
-                            <div class="col-md-12">
-                                <select class="form-select light-gray" id="rooms" name="rooms">
-                                    <option value="" disabled selected hidden>Select Room...</option>
-                                </select>
-                                @error('rooms')
-                                    <p class="danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </p>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-2 form-group">
-                            <div class="col-md-12">
-                                <input type="text" class="form-control datepicker" name="check_in" id="datepicker" placeholder="Check In" onfocus="(this.type='date')" onblur="(this.type='text')" value="{{ old('check_in') }}">
-                                @error('check_in')
-                                    <p class="danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </p>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-2 form-group">
-                            <div class="col-md-12">
-                                <input type="text" class="form-control datepicker" name="check_out" placeholder="Check Out" onfocus="(this.type='date')" onblur="(this.type='text')" value="{{ old('check_out') }}">
-                                @error('check_out')
-                                    <p class="danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </p>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-2 form-group">
-                            <div class="row">
-                                <div class="col-md-6">
-                                   
-                                    <input type="number" class="form-control" name="adult" value="{{ old('adult') }}" placeholder="Adult" min="1" max="3">
-                                   
-                                    @error('adult')
+                        <div class="row">
+                            <div class="col-md-2 form-group">                            
+                                <div class="col-md-12">
+                                    <select class="form-select light-gray" id="room_types" name="room_types">
+                                        <option value="" disabled selected hidden>Select RoomType...</option>
+                                        @foreach($room_types as $room_type)
+                                            <option value="{{ old('room_types', $room_type->id) }}">{{ $room_type->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('room_types')
                                         <p class="danger" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </p>
                                     @enderror
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="number" class="form-control" name="child"  value="{{ old('child') }}" placeholder="Child" min="1" max="3">
-                                    @error('child')
+                                </div>   
+                            </div>
+                            <div class="col-md-2 form-group">
+                                <div class="col-md-12">
+                                    <select class="form-select light-gray" id="rooms" name="rooms">
+                                        <option value="" disabled selected hidden>Select Room...</option>
+                                    </select>
+                                    @error('rooms')
                                         <p class="danger" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </p>
                                     @enderror
                                 </div>
                             </div>
+                            <div class="col-md-2 form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control datepicker" name="check_in"  placeholder="Check In" onfocus="(this.type='date')" onblur="(this.type='text')" value="{{ old('check_in') }}">
+                                    @error('check_in')
+                                        <p class="danger" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </p>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-2 form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control datepicker" name="check_out" placeholder="Check Out" onfocus="(this.type='date')" onblur="(this.type='text')" value="{{ old('check_out') }}">
+                                    @error('check_out')
+                                        <p class="danger" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </p>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-2 form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    
+                                        <input type="number" class="form-control" name="adult" value="{{ old('adult') }}" placeholder="Adult" min="1" max="3">
+                                    
+                                        @error('adult')
+                                            <p class="danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </p>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="number" class="form-control" name="child"  value="{{ old('child') }}" placeholder="Child" min="1" max="3">
+                                        @error('child')
+                                            <p class="danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </p>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-2 form-group">
+                                @if (auth('customer')->check())
+                                    <button type="submit" class="btn btn-book">Book<i class="fa-solid fa-angles-right ml-10"></i></button>
+                                @else
+                                    <button type="button" class="btn btn-book" data-bs-toggle="modal" data-bs-target="#exampleModal">Book<i class="fa-solid fa-angles-right ml-10"></i></button>
+                                @endif
+                            </div>
                         </div>
-                        
-                        <div class="col-md-2 form-group">
-                            @if (auth('customer')->check())
-                                <button type="submit" class="btn btn-book">Book<i class="fa-solid fa-angles-right ml-10"></i></button>
-                            @else
-                                <button type="button" class="btn btn-book" data-bs-toggle="modal" data-bs-target="#exampleModal">Book<i class="fa-solid fa-angles-right ml-10"></i></button>
-                            @endif
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+                    </form>
+                </div>
+            </div> --}}
         <div class="row mt-50 mb-50 gx-3 ">
             <div class="col-md-4 scroll-left">
                 <div class="short_desc text-color">
@@ -291,28 +285,28 @@
     $(document).ready(function(){
         // alert('hello'); 
         $('#room_types').change(function(){
-    var roomType = $('#room_types').val();
-    console.log(roomType);
-    $.ajax({
-        url: '{{route('test')}}',
-        type: 'GET',
-        data: { 'room_type': roomType },
-        success: function(response){
-            $("#rooms").empty();
-            console.log(response);
-            $("#rooms").append('<option value="" disabled selected hidden>Select Room...</option>');
-            $.each(response, function(key, value){
-                $('#rooms').append($('<option>', {
-                    value: value.id,
-                    text: value.room_no
-                }));
+            var roomType = $('#room_types').val();
+            console.log(roomType);
+            $.ajax({
+                url: '{{route('test')}}',
+                type: 'GET',
+                data: { 'room_type': roomType },
+                success: function(response){
+                    $("#rooms").empty();
+                    console.log(response);
+                    $("#rooms").append('<option value="" disabled selected hidden>Select Room...</option>');
+                    $.each(response, function(key, value){
+                        $('#rooms').append($('<option>', {
+                            value: value.id,
+                            text: value.room_no
+                        }));
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                }
             });
-        },
-        error: function(xhr, status, error) {
-            console.log(xhr.responseText);
-        }
-    });
-});
+        });
 
         
         $(".datepicker").datepicker({

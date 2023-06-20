@@ -9,8 +9,9 @@ use App\Models\RoomType;
 class RoomController extends Controller
 {
     public function getData(Request $request){
+        $roomType = RoomType::find($request->room_type);
         $data = Room::where('roomType_id', $request->room_type)->get();
-        return $data;
+        return [$data, $roomType];
     }
 
     public function index(){

@@ -60,7 +60,7 @@ class RoomTypeController extends Controller
                 $imageName = uniqid() . time().'.'.$image->extension();  
                 $image->move(public_path('images'),$imageName);
                 $imageModels->url = $imageName;
-                $imageModels->roomType_id = $room->id;
+                $imageModels->roomType_id = $roomType->id;
                 $imageModels->save();
             }
     

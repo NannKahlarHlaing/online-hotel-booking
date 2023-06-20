@@ -75,6 +75,42 @@
                         </div>
                     </div>
                     <div class="card-body border-top">
+                        <h4 class="card-title mb-3">Contact Information</h4>
+                        <div class="row my-2">
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <span>Name</span>
+                            </div>
+                            <div class="col-9">
+                                {{ $customer->name }}
+                            </div>
+                        </div>
+                        <div class="row my-2">
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <span>NRC</span>
+                            </div>
+                            <div class="col-9">
+                                {{ $customer->NRC }}
+                            </div>
+                        </div>
+                        <div class="row my-2">
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <span>Phone</span>
+                            </div>
+                            <div class="col-9">
+                                {{ $customer->ph_no }}
+                            </div>
+                        </div>
+                        <div class="row my-2">
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <span>Email</span>
+                            </div>
+                            <div class="col-9">
+                                {{ $customer->email }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body border-top">
+                        <h4 class="card-title mb-3">Booking Information</h4>
                         <div class="row my-2">
                             <div class="col-6">
                                 {{ $roomType->name }}

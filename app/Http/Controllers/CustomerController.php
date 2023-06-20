@@ -19,7 +19,7 @@ class CustomerController extends Controller
 
         if (Auth::guard('customer')->attempt($credentials)) {
             // Authentication passed...
-            return redirect('/');
+            return redirect()->back();
         }
 
         return redirect()->back()->withInput()->withErrors([

@@ -28,9 +28,35 @@
     
 </head>
 <body>
-    
+
 <section class="header bg-image">
+    <div class="navbar-expand-lg">
+        <div class="container">
+            <div class="row p-1 d-flex justify-content-end ">
+                    @if (auth('customer')->check()) 
+                        <div class="col-3 col-md-2 col-lg-2">
+                            <form method="POST" action="{{ url('/logout') }}">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-6">
+                                        <span class="text-color">{{ auth('customer')->user()->name }}</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="submit" class="bg-transparent border-0 text-color">Logout</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    @else
+                    <div class="col-3 col-md-2 col-lg-1"><button type="button" class="bg-transparent border-0 text-color" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button></div>
+                    <div class="col-3 col-md-2 col-lg-1"><button type="button" class="bg-transparent border-0 text-color" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button></div>
+                @endif
+            </div>
+        </div>
+    </div>
+    <div class="row"></div>
     <div class="container">
+        
         <div class="row">
             <div class="col-12">
                 <h1 class="mt-30 mb-30">{{ env('HOTEl_NAME') }}</h1>
@@ -57,8 +83,8 @@
                                 <li class="nav-item col">
                                     <a class="nav-link " href="{{ url('/about') }}">About</a>
                                 </li>
-                                <li class="nav-item col" href="{{ url('/book') }}">
-                                    <a class="nav-link ">Book</a>
+                                <li class="nav-item col" >
+                                    <a class="nav-link " href="{{ url('/booking') }}">Book</a>
                                 </li>
                             </ul>
                         </div>
@@ -69,6 +95,97 @@
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 bg-light" >
+                        <h5 class="modal-title mb-1 text-center">Register</h5>
+                        <form class="register-form form" action="{{url('/create_user')}}" method="POST"> 
+                            @csrf
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="cus_name" value="{{old('cus_name')}}">
+                                    <p id="cus_name-error" class="danger" role="alert"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="NRC" class="form-label">NRC</label>
+                                <input type="text" class="form-control" id="NRC" name="NRC" value="{{old('NRC')}}">
+                                    <p id="NRC-error" class="danger" role="alert"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="number" class="form-control" id="phone" name="phone" value="{{old('phone')}}">
+                                <p id="phone-error" class="danger" role="alert"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
+                                <p id="email-error" class="danger" role="alert"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="text" class="form-control" id="password" name="password" >
+                                <p id="password-error" class="danger" role="alert"></p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Confirm Password</label>
+                                <input type="text" class="form-control" id="password_confirmation" name="password_confirmation">
+                                <p id="password_confirmation-error" class="danger" role="alert"></p>
+                            </div>
+                            <button type="submit" class="btn-book">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div> 
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 bg-light" id="">
+                        <h5 class="modal-title text-center mb-1">login</h5>  
+                        <form  class="form" action="{{ url('/user-login') }}" method="POST">
+                            
+                            @csrf
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
+                                <p id="email-error" class="danger" role="alert"></p>
+                                @error('email')
+                                    <p class="danger" role="alert">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="text" class="form-control" id="password" name="password" >
+                                <p id="password-error" class="danger" role="alert"></p>
+                            </div>
+                            <button type="submit" class="btn-book">Login</button>
+                        </form>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div> 
 
 @yield('content')
 
